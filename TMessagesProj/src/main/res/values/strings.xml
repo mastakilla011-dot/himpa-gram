@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="AppName">Freezgram</string>
-    <string name="AppNameBeta">Freezgram Beta</string>
+    <string name="AppName">Himpa Gram</string>
+    <string name="AppNameBeta">Himpa Gram Beta</string>
     <string name="LanguageName">English</string>
     <string name="English">English</string>
     <string name="LanguageNameInEnglish">English</string>
@@ -11590,7 +11590,7 @@
     <string name="CreateManagedBotUsernameSuffixMissing">The username must end in %1$s.</string>
     <string name="CreateManagedBotUsernameCheckFailed">Couldn\'t check this username. Please try again.</string>
     <string name="FreezgramActivityStats">Share usage statistics</string>
-    <string name="FreezgramActivityStatsInfo">Enabled by default. Freezgram sends the active Telegram account ID to count unique accounts. The server stores a pseudonym and last activity for about 30 days.</string>
+    <string name="FreezgramActivityStatsInfo">Enabled by default. Himpa Gram sends the active Telegram account ID to count unique accounts. The server stores a pseudonym and last activity for about 30 days.</string>
     <string name="WalletSearchGifts">Search gifts</string>
     <string name="WalletGiftOnCard">On Card</string>
     <string name="WalletGiftAddToCard">Add to Card</string>
