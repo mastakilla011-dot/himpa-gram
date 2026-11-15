@@ -25,7 +25,6 @@ concurrency:
 
 jobs:
   build:
-    if: github.repository == 'cneqq/freezgram'
     name: Release APK (${{ matrix.abi }})
     runs-on: ubuntu-24.04
     timeout-minutes: 120
@@ -48,8 +47,8 @@ jobs:
       NATIVE_TARGET: ${{ matrix.abi }}
       APK_ABI_LABEL: ${{ matrix.label }}
       PERSONAL_BUILD_ID: personal
-      PERSONAL_APPLICATION_ID: com.freezgram.app
-      PERSONAL_BUILD_LABEL: Freezgram
+      PERSONAL_APPLICATION_ID: com.himpagram.app
+      PERSONAL_BUILD_LABEL: HimpaGram
       OPTIMIZATION_MODE: release
       CCACHE_DIR: ${{ github.workspace }}/.ccache
       CCACHE_MAXSIZE: 2G
@@ -70,9 +69,9 @@ jobs:
           api_id = os.environ.get('API_ID', '')
           api_hash = os.environ.get('API_HASH', '')
           if not re.fullmatch(r'[1-9][0-9]{0,9}', api_id) or int(api_id) > 2147483647:
-              raise SystemExit('Missing or invalid API_ID. Add it at Settings > Secrets and variables > Actions in cneqq/freezgram.')
+              raise SystemExit('Missing or invalid API_ID. Add it at Settings > Secrets and variables > Actions in your fork.')
           if not re.fullmatch(r'[0-9a-fA-F]{32}', api_hash):
-              raise SystemExit('Missing or invalid API_HASH. Add it at Settings > Secrets and variables > Actions in cneqq/freezgram.')
+              raise SystemExit('Missing or invalid API_HASH. Add it at Settings > Secrets and variables > Actions in your fork.')
           for name in ('RELEASE_KEYSTORE', 'KEYSTORE_PASS'):
               if not os.environ.get(name):
                   raise SystemExit('Missing signing Secret: ' + name + '. See docs/PERSONAL_BUILD.md. Temporary signing is disabled.')
@@ -326,7 +325,7 @@ jobs:
           rm -f local.properties TMessagesProj/release.keystore "$HOME/.android/debug.keystore"
 
   publish-release:
-    if: github.repository == 'cneqq/freezgram' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.architecture == 'all-three'))
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.architecture == 'all-three')
     needs: build
     runs-on: ubuntu-24.04
     permissions:
